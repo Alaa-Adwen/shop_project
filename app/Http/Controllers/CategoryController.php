@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(3);
         return view('admin.categories.index', compact('categories'));
     }
 

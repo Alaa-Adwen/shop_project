@@ -283,7 +283,7 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
-                                    href="{{ url('') }}">
+                                    href="{{ url('/home') }}">
                                     <svg class="bi">
                                         <use xlink:href="#house-fill" />
                                     </svg>
@@ -320,12 +320,20 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                                <a class="dropdown-item nav-link d-flex align-items-center gap-2"
+                                    href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
                                     <svg class="bi">
                                         <use xlink:href="#door-closed" />
                                     </svg>
-                                    خروج
+                                    {{ __('خروج') }}
+
                                 </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         </ul>
                     </div>

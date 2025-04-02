@@ -70,9 +70,10 @@
                     التصنيفات
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ url('/') }}">الكل</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/items') }}">الكل</a></li>
                     @foreach ($categories as $category)
-                        <li><a class="dropdown-item" href="{{ url('/' . $category->id) }}">{{ $category->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/items/' . $category->id) }}">{{ $category->name }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>

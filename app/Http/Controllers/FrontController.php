@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Category;
+use App\Models\Admin\Product;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $categories = Category::all();

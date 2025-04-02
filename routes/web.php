@@ -4,11 +4,12 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 
 
 //Dashboard routes
-
+//Route::prefix('admin')->group(function () {
 Route::get('products', [ProductController::class, 'index']);
 Route::get('products/create', [ProductController::class, 'create']);
 Route::post('products/store', [ProductController::class, 'store']);
@@ -22,8 +23,14 @@ Route::post('categories/store', [CategoryController::class, 'store']);
 Route::get('categories/edit/{id}', [CategoryController::class, 'edit']);
 Route::get('categories/delete/{id}', [CategoryController::class, 'destroy']);
 Route::post('categories/update/{id}', [CategoryController::class, 'update']);
+//});
+
 
 //Front page routes
 
-Route::get('/', [FrontController::class, 'index']);
-Route::get('/{id}', [FrontController::class, 'declare']);
+Route::get('/items', [FrontController::class, 'index']);
+Route::get('/items/{id}', [FrontController::class, 'declare']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
